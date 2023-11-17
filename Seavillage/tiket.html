@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tiket & Promo Sevillage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- CSS External Link -->
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    function scrollToSection(sectionId) {
+      const section = document.querySelector(sectionId);
+      if (section) {
+        const startPosition = window.scrollY;
+        const targetPosition = section.offsetTop;
+        const distance = targetPosition - startPosition;
+        const duration = 1000;
+        const startTime = performance.now();
+  
+        function scrollAnimation(currentTime) {
+          const elapsedTime = currentTime - startTime;
+          const scrollProgress = Math.min(elapsedTime / duration, 1);
+          const scrollTo = startPosition + distance * scrollProgress;
+          window.scrollTo(0, scrollTo);
+  
+          if (scrollProgress < 1) {
+            requestAnimationFrame(scrollAnimation);
+          }
+        }
+  
+        requestAnimationFrame(scrollAnimation);
+      }
+    }
+
+    function changePage(pageUrl) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach((page) => {
+        page.style.transform = 'translateX(-100%)';
+      });
+      
+      fetch(pageUrl)
+        .then(response => response.text())
+        .then(data => {
+          const newPage = document.createElement('div');
+          newPage.innerHTML = data;
+          newPage.classList.add('page');
+          document.querySelector('.transition-container').appendChild(newPage);
+          setTimeout(() => {
+            newPage.style.transform = 'translateX(0)';
+          }, 10);
+        });
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Page Header -->
+  <header>
+    <h1>Tiket Sevillage</h1>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav">
+    <a class="logo">Sevillage</a>
+    <a href="index.html" >Beranda</a>
+    <div class="dropdown">
+      <button class="dropbtn">Tiket & Promo
+        <i class="fa">&#xf107;</i>
+      </button>
+      <div class="dropdown-nav">
+        <a href="#attractions" onclick="scrollToSection('#attractions')"><h4>Wahana</h4></a>
+        <a href="Sky Tree.html">Sky Tree</a>
+        <a href="Sky Nest.html">Sky Nest</a>
+        <a href="Sky Bike.html">Sky Bike</a>
+        <a href="Flying Fox.html">Flying Fox</a>
+        <a href="Adrenaline Swing.html">Adrenaline Swing</a>
+        <a href="Helikopter.html">Helikopter</a>
+        <a href="#villa-glamping" onclick="scrollToSection('#villa-glamping')"><h4>Villa & Glamping</h4></a>
+        <a href="Tenda Dome.html">Tenda Dome</a>
+        <a href="Tenda Keong.html">Tenda Keong</a>
+        <a href="Glamping.html">Glamping</a>
+        <a href="#promo-packages" onclick="scrollToSection('#promo-packages')"><h4>Paket Promo</h4></a>
+        <a href="Paket Hemat Main Puas.html">Paket Hemat Main Puas</a>
+        <a href="Paket Nginep Ceria.html">Paket Nginep Ceria</a>
+        <a href="Paket Nginep Sultan.html">Paket Nginep Sultan</a>
+        <a href="tiket.html"><h4>Lihat Semua Tiket</h4></a>
+      </div>
+    </div>
+  </nav>
+  <!-- Main Content -->
+  <main>
+    <!-- Attractions Section -->
+    <section id="attractions">
+      <h2>Wahana</h2>
+      <!-- Attractions Cards -->
+      <div class="attractions-cards">
+
+        <div class="card">
+          <img src="img/Sky Tree.jpeg" alt="Sky Tree">
+          <h3>Sky Tree</h3>
+          <p class="price">20.000</p>
+          <p>Tidak Termasuk Tiket Masuk</p>
+          <a href="Sky Tree.html">
+          <button >Beli Tiket</button>
+          </a>
+        </div>
+
+        <div class="card">
+          <img src="img/Sky Nest.jpeg" alt="Sky Nest">
+          <h3>Sky Nest</h3>
+          <p class="price">20.000</p>
+          <p>Tidak Termasuk Tiket Masuk</p>
+          <a href="Sky Nest.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+        <div class="card">
+          <img src="img/foto3.jpeg" alt="Sky bike">
+          <h3>Sky Bike</h3>
+          <p class="price">25.000</p>
+          <p>Tidak Termasuk Tiket Masuk</p>
+          <a href="Sky Bike.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+        <div class="card">
+          <img src="img/Flying Fox.jpeg" alt="Flying Fox">
+          <h3>Flying Fox</h3>
+          <p class="price">25.000</p>
+          <p>Tidak Termasuk Tiket Masuk</p>
+          <a href="Flying Fox.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+        <div class="card">
+          <img src="img/foto1.jpeg" alt="Adrenaline Swing">
+          <h3>Adrenaline Swing</h3>
+          <p class="price">25.000</p>
+          <p>tidak Termasuk Tiket Masuk</p>
+          <a href="Adrenaline Swing.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+        <div class="card">
+          <img src="img/Helikopter.jpeg" alt="Helikopter">
+          <h3>Helikopter</h3>
+          <p class="price">20.000</p>
+          <p>Tidak Termasuk Tiket Masuk</p>
+          <a href="Helikopter.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+        <div class="card">
+          <img src="img/foto2.jpeg" alt="Balon Helium">
+          <h3>Balon Helium</h3>
+          <p class="price">20.000</p>
+          <p>Tidak Termasuk Tiket Masuk</p>
+          <a href="Balon Helium.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+        <!-- other cards -->
+
+      </div>
+
+    </section>
+
+
+    <!-- Villa & Glamping Section -->
+
+    <section id="villa-glamping">
+
+      <h2>Villa & Glamping</h2>
+
+      <!-- Villa & Glamping Cards -->
+
+      <div class="villa-glamping-cards">
+
+        <div class="card">
+          <img src="img/Tenda-biasa.jpg" alt="Tenda Dome">
+          <h3>Tenda Dome</h3>
+          <p>Weekday<p>
+              <p class="price">400.000</p>
+              <p>Weekend</p>
+              <p class="price">500.000</p>
+              <p>Tidak Termasuk Tiket Masuk</p>
+              <a href="Tenda Dome.html">
+              <button>Beli Tiket</button>
+              </a>
+        </div>
+
+        <div class="card">
+          <img src="img/deretan tenda keong.jpg" alt="Tenda Keong">
+          <h3>Tenda Keong</h3>
+          <p>Weekday<p>
+              <p class="price">600.000</p>
+              <p>Weekend</p>
+              <p class="price">750.000</p>
+              <p>Tidak Termasuk Tiket Masuk</p>
+              <a href="Tenda Keong.html">
+              <button>Beli Tiket</button>
+              </a>
+        </div>
+
+        <div class="card">
+          <img src="img/Glamping.jpeg" alt="Glamping">
+          <h3>Glamping</h3>
+          <p>Weekday<p>
+              <p class="price">1.000.000</p>
+              <p>Weekend</p>
+              <p class="price">1.200.000</p>
+              <p>Tidak Termasuk Tiket Masuk</p>
+              <a href="Glamping.html">
+              <button>Beli Tiket</button>
+              </a>
+        </div>
+
+        <!-- other cards -->
+
+      </div>
+
+    </section>
+
+    <!-- Promo Packages Section -->
+
+    <section id="promo-packages">
+
+      <h2>Paket Promo</h2>
+
+      <!-- Promo Packages Cards -->
+
+      <div class="promo-packages-cards">
+
+        <div class="card">
+          <img src="img/Promo.jpeg" alt="Paket Hemat Main Puas">
+          <h3>Paket Hemat Main Puas</h3>
+          <p class="price">155.000</p>
+          <p>Tiket Masuk + Bebas Main Apa Saja</p>
+          <a href="Paket Hemat Main Puas.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+        <div class="card">
+          <img src="img/Promo.jpeg" alt="Paket Nginep Ceria">
+          <h3>Paket Nginep Ceria</h3>
+          <p class="price">450.000</p>
+          <p>Tiket Masuk + Tenda Dome + Bebas Main 3 Wahana</p>
+          <a href="Paket Nginep Ceria.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+        <div class="card">
+          <img src="img/Promo.jpeg" alt="Paket Nginep Sultan">
+          <h3>Paket Nginep Sultan</h3>
+          <p class="price">1.100.000</p>
+          <p>Tiket Masuk + Glamping + Bebas Main 5 Wahana + Break Feast</p>
+          <a href="Paket Nginep Sultan.html">
+          <button>Beli Tiket</button>
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+
+  <footer>
+    <h3>PROJECT KELOMPOK 5</h3>
+
+    <p>
+      Firman Maulana 202143502147<br>
+      Heri Setiawan 202143502132<br>
+      Muhamad Nofal ya Zafar 202143502159<br>
+      Dzakwan Farandito Mertoyudo 202143502133<br>
+      Fikri Ahlusaini Firdaus 202043501844<br>
+      Azahra Nur Fitria 202143502153<br>
+      Laras Sati Andini 202143502110
+      <!-- other names -->
+    </p>
+
+  </footer>
+
+</body>
+
+</html>

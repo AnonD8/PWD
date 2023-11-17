@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tiket & Promo Sevillage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- CSS External Link -->
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <!-- Tambahkan referensi ke file bahasa lokal Indonesia -->
+  <script src="datepicker-id.js"></script>
+  
+  <script>
+      $(function() {
+    // Mendapatkan tanggal hari ini
+    var today = new Date();
+
+    // Inisialisasi datepicker dengan format tanggal/bulan/tahun (dd/mm/yy) dan minDate
+    $("#datepicker").datepicker({
+        dateFormat: "dd/mm/yy", 
+        minDate: today, 
+        onSelect: function(dateText, inst) {
+            $("#selectedDate").text("Tanggal dipilih: " + dateText);
+            $("#ticket-options").show();
+        }
+    });
+
+    // Memperbarui elemen dengan ID "currentDate" dengan tanggal hari ini
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    today = dd + '/' + mm + '/' + yyyy;
+    $("#currentDate").text("Tanggal hari ini: " + today);
+    });
+  </script>
+
+<script>
+  $(document).ready(function() {
+      $('input[type=radio][name=ticket-type]').change(function() {
+          if (this.value === 'flying-fox') {
+              // Menampilkan informasi tiket Sky Tree
+              $('#selected-ticket').text('Anda memilih Tiket Masuk Flying Fox.');
+          } else if (this.value === 'sevillage & flying-fox') {
+              // Menampilkan informasi tiket Sevillage
+              $('#selected-ticket').text('Anda memilih Tiket Masuk Sevillage & Flying Fox.');
+          }
+          $('#ticket-info').show();
+      });
+  });
+
+  $(document).ready(function() {
+    // Harga tiket
+    var ticketPrices = {
+        'flying-fox': 25000,
+        'sevillage & flying-fox': 50000,
+    };
+
+    // Fungsi untuk menghitung harga berdasarkan jumlah tiket dan jenis tiket yang dipilih
+    function calculateTotalPrice(quantity, ticketType) {
+        var ticketPrice = ticketPrices[ticketType] || 0;
+        var totalPrice = ticketPrice * quantity;
+        $("#total-price").text("Total Harga: Rp " + totalPrice);
+    }
+
+    $("#ticket-quantity").on("input", function() {
+        var quantity = parseInt($(this).val()) || 0;
+        var ticketType = $('input[type=radio][name=ticket-type]:checked').val() || 'flying-fox';
+        calculateTotalPrice(quantity, ticketType);
+    });
+
+    $('input[type=radio][name=ticket-type]').change(function() {
+        var quantity = parseInt($("#ticket-quantity").val()) || 1;
+        var ticketType = this.value;
+        calculateTotalPrice(quantity, ticketType);
+    });
+
+    calculateTotalPrice(1, 'flying-fox');
+    $("#pay-button").on("click", function() {
+        var PesanFlyingFox = document.getElementById("Pesan Flying Fox");
+        if (PesanFlyingFox) {
+          PesanFlyingFox.style.display = "none";
+        }
+        $("#ticket-options").hide();
+        $("#ticket-info").hide();
+        $("#datepicker").hide();
+        $("#selectedDate").hide();
+        $("#currentDate").hide();
+        $("#buy-form").show();
+    });
+  });
+  </script>
+</head>
+<body>
+
+  <!-- Page Header -->
+
+  <header>
+    <h1>Tiket Sevillage</h1>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav">
+    <a class="logo">Sevillage</a>
+    <a href="index.html">Beranda</a>
+    <div class="dropdown">
+      <button class="dropbtn">Tiket & Promo
+        <i class="fa">&#xf107;</i>
+      </button>
+      <div class="dropdown-nav">
+        <a href="tiket.html#attractions"><h4>Wahana</h4></a>
+        <a href="Sky Tree.html">Sky Tree</a>
+        <a href="Sky Nest.html">Sky Nest</a>
+        <a href="Sky Bike.html">Sky Bike</a>
+        <a href="Adrenaline Swing.html">Adrenaline Swing</a>
+        <a href="Helikopter.html">Helikopter</a>
+        <a href="Balon Helium.html">Balon Helium</a>
+        <a href="tiket.html#villa-glamping"><h4>Villa & Glamping</h4></a>
+        <a href="Tenda Dome.html">Tenda Dome</a>
+        <a href="Tenda Keong.html">Tenda Keong</a>
+        <a href="Glamping.html">Glamping</a>
+        <a href="tiket.html#promo-packages"><h4>Paket Promo</h4></a>
+        <a href="Paket Hemat Main Puas.html">Paket Hemat Main Puas</a>
+        <a href="Paket Nginep Ceria.html">Paket Nginep Ceria</a>
+        <a href="Paket Nginep Sultan.html">Paket Nginep Sultan</a>
+        <a href="tiket.html"><h4>Lihat Semua Tiket</h4></a>
+      </div>
+    </div>
+  </nav>
+  <!-- Main Content -->
+  <main>
+    <section id="Pesan Flying Fox">
+        <h2>Pesan Wahana Flying Fox</h2>
+        <div class="dropdown-navtgl">
+          <div class="cardtgl">
+            <div class="card-headertgl">
+              Pilih Tanggal
+            </div>
+            <div class="card-bodytgl">
+              <div id="datepicker"></div>
+              <!-- Tampilkan tanggal yang dipilih di sini -->
+              <p></p>
+              <div id="selectedDate"></div>
+              <!-- Tampilkan tanggal hari ini di sini -->
+              
+              <div id="currentDate"></div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <div id="ticket-options" style="display: none;">
+      <p></p>
+      <label>Pilih Tiket:</label><br>
+      <input type="radio" name="ticket-type" value="flying-fox" id="flying-fox-radio">
+      <label for="flying-fox-radio">Tiket Flying Fox</label><br>
+      <input type="radio" name="ticket-type" value="sevillage & flying-fox" id="sevillage-radio">
+      <label for="sevillage-radio">Tiket Sevillage & Flying Fox</label>
+      <p></p>
+    </div>
+  
+  <div id="ticket-info" style="display: none;">
+      <!-- Informasi tiket yang akan ditampilkan di sini -->
+      <h3>Informasi Tiket:</h3>
+      <div id="selected-ticket"></div>
+      <label for="ticket-quantity">Jumlah Tiket:</label><br>
+      <input type="number" name="ticket-quantity" id="ticket-quantity" min="1" value="1">
+      <div id="total-price">Total Harga: Rp 0</div>
+      <button id="pay-button">Bayar</button>
+  </div>
+
+    <section id="buy-form" style="display: none;">
+      <div class="form-wrapper">
+          <h2 class="section-title">Isi Information Pembayaran</h2>
+          <form id="myForm" name="registerForm">
+            <div class="form-input">
+              <label for="name">Nama Lengkap:</label><br>
+              <input name="name" type="text" id="name" required><br>
+              <p></p>
+            </div>
+            <div class="form-input">
+                <label for="phone-number">Nomer telfon:</label><br>
+                <input name="phoneNumber" type="number" id="phone-number" required>
+                <p></p>
+            </div>
+            <div class="form-input">
+                <label for="email">Email:</label><br>
+                <input name="email" type="email" id="email" required>
+                <p></p>
+            </div>
+            <div class="form-input">
+                <label for="payment-method">Pilih Metode Pembayaran:</label><br>
+                <select name="paymentMethod" id="payment-method" required>
+                    <option selected="false"></option>
+                    <option value="e-wallet">Dana</option>
+                    <option value="e-wallet">Gopay</option>
+                    <option value="e-wallet">ShopeePay</option>
+                    <option value="minimarket">Indomart/Alfamart</option>
+                    <option value="bank-transfer">Transfer Bank</option>
+                </select>
+            </div>
+            <div class="form-input">
+                <p></p>
+                <input class="submit-btn" type="submit" id="submit" value="Bayar Sekarang">
+            </div>
+          </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+
+  <footer>
+    <h3>PROJECT KELOMPOK 5</h3>
+
+    <p>
+      Firman Maulana 202143502147<br>
+      Heri Setiawan 202143502132<br>
+      Muhamad Nofal ya Zafar 202143502159<br>
+      Dzakwan Farandito Mertoyudo 202143502133<br>
+      Fikri Ahlusaini Firdaus 202043501844<br>
+      Azahra Nur Fitria 202143502153<br>
+      Laras Sati Andini 202143502110
+      <!-- other names -->
+    </p>
+
+  </footer>
+
+</body>
+
+</html>

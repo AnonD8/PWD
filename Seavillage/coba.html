@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Tiket Harga</title>
+  <script>
+  document.getElementById('tanggal').addEventListener('input', function() {
+    let selectedDate = new Date(this.value);
+    let dayOfWeek = selectedDate.getDay();
+    let harga;
+  
+    if (dayOfWeek === 0 || dayOfWeek === 6) { // Minggu (0) atau Sabtu (6)
+      harga = 150; // Harga untuk weekend
+    } else {
+      harga = 100; // Harga untuk weekday
+    }
+  
+    document.getElementById('harga').textContent = 'Harga: $' + harga;
+  });
+  </script>
+</head>
+<body>
+  <h1>Sistem Pemesanan Tiket</h1>
+
+  <label for="tanggal">Pilih Tanggal:</label>
+  <input type="date" id="tanggal" min="2023-01-01" max="2023-12-31">
+
+  <p id="harga">Harga: </p>
+
+  <script src="script.js"></script>
+</body>
+</html>

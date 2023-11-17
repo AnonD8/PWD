@@ -1,0 +1,329 @@
+/* Global Styles */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+}
+
+/* Header */
+
+header {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/1.jpg");
+  background-size: auto;
+  color: #fff;
+  text-align: center;
+  padding: 80px 0;
+}
+
+header h1 {
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 80px;
+}
+
+/* Navigation */
+
+.nav{
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.nav a{
+  text-decoration: none;
+  font-size: 16px;
+  color: #1e90ff;
+  display: inline-block;
+  padding: 20px 26px;
+  transition: 0.3s ease;
+}
+
+.dropdown{
+  display:inline-block;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn{
+  font-size: 16px;
+  border: none;
+  outline: none;
+  display:inline-block;
+  position:relative;
+  background-color: inherit;
+  font-family: inherit;
+  color:#1e90ff;
+  padding: 20px 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  height:25px;
+  top: 5px;
+  cursor: pointer;
+}
+nav a .logo {
+  font-weight: bold;
+}
+
+nav a:hover, .dropdown:hover .dropbtn {
+  color: #fff;
+  background-color: #1e90ff;
+  transform: translateY(-3px);
+}
+
+.dropdown-nav{
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-width: 100px;
+  max-height: 200px; 
+  overflow-y: auto; 
+  scroll-behavior: smooth;
+}
+
+.dropdown-nav a{
+  float:none;
+  color: #1e90ff;
+  padding: 20px 26px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  width: 103px;
+  border-top: 3px solid #fff;
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dropdown-nav a:hover{
+  color: #fff;
+  background-color: #1e90ff;
+  transform: translateY(-3px);
+}
+
+.dropdown:hover .dropdown-nav{
+  display:block;
+}
+
+/* Main Content */
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.introduction img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+section h2 {
+  font-size: 28px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+section h3 {
+  text-align: center;
+}
+
+section h4 {
+  margin-top: 30px;
+}
+
+section p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+section li {
+  margin-bottom: 10px;
+}
+
+section li img {
+  width: 500px;
+  height: 500px;
+  height: auto;
+}
+
+section img {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* Footer */
+
+footer {
+  background: #1e90ff;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Tiket Page */
+
+.attractions-cards,
+.villa-glamping-cards,
+.promo-packages-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transform: translateY(-3px);
+}
+
+.card img {
+  max-width: 100%;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.card .price {
+  color: #179b17;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.card button {
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #179b17;
+  color: white;
+}
+
+.dropdown-navtgl {
+  position: relative;
+  display: inline-block;
+}
+
+.cardtgl {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.card-headertgl {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card-bodytgl {
+  padding-left: 10px;
+}
+
+.submit-btn {
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  font-size: 1.5rem;
+}
+
+.submit-btn:hover {
+  background-color: #179b17;
+  color: white;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+
+  header {
+    padding: 10px;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav a {
+    font-size: 16px;
+    padding: 20px 10px;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  .attractions-cards,
+  .villa-glamping-cards,
+  .promo-packages-cards {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/*Tanggal */
+#datepicker {
+  width: 100%;
+}
+
+/*form */
+.form-input{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.form-wrapper{
+  width: 35%;
+  margin: 0 auto;
+}
+
+.form-wrapper input{
+  border-radius: 7px;
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+/*button bayar */
