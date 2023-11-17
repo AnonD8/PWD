@@ -2,55 +2,12 @@
 <html>
 
 <head>
+
   <title>Tiket & Promo Sevillage</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- CSS External Link -->
   <link rel="stylesheet" href="style.css">
-
-  <script>
-    function scrollToSection(sectionId) {
-      const section = document.querySelector(sectionId);
-      if (section) {
-        const startPosition = window.scrollY;
-        const targetPosition = section.offsetTop;
-        const distance = targetPosition - startPosition;
-        const duration = 1000;
-        const startTime = performance.now();
   
-        function scrollAnimation(currentTime) {
-          const elapsedTime = currentTime - startTime;
-          const scrollProgress = Math.min(elapsedTime / duration, 1);
-          const scrollTo = startPosition + distance * scrollProgress;
-          window.scrollTo(0, scrollTo);
-  
-          if (scrollProgress < 1) {
-            requestAnimationFrame(scrollAnimation);
-          }
-        }
-  
-        requestAnimationFrame(scrollAnimation);
-      }
-    }
-
-    function changePage(pageUrl) {
-      const pages = document.querySelectorAll('.page');
-      pages.forEach((page) => {
-        page.style.transform = 'translateX(-100%)';
-      });
-      
-      fetch(pageUrl)
-        .then(response => response.text())
-        .then(data => {
-          const newPage = document.createElement('div');
-          newPage.innerHTML = data;
-          newPage.classList.add('page');
-          document.querySelector('.transition-container').appendChild(newPage);
-          setTimeout(() => {
-            newPage.style.transform = 'translateX(0)';
-          }, 10);
-        });
-    }
-  </script>
 </head>
 
 <body>
@@ -62,37 +19,29 @@
   <!-- Navigation Bar -->
   <nav class="nav">
     <a class="logo">Sevillage</a>
-    <a href="index.html" >Beranda</a>
+    <a href="index.html">Beranda</a>
     <div class="dropdown">
       <button class="dropbtn">Tiket & Promo
         <i class="fa">&#xf107;</i>
       </button>
       <div class="dropdown-nav">
-        <a href="#attractions" onclick="scrollToSection('#attractions')"><h4>Wahana</h4></a>
-        <a href="Sky Tree.html">Sky Tree</a>
-        <a href="Sky Nest.html">Sky Nest</a>
-        <a href="Sky Bike.html">Sky Bike</a>
-        <a href="Flying Fox.html">Flying Fox</a>
-        <a href="Adrenaline Swing.html">Adrenaline Swing</a>
-        <a href="Helikopter.html">Helikopter</a>
-        <a href="#villa-glamping" onclick="scrollToSection('#villa-glamping')"><h4>Villa & Glamping</h4></a>
-        <a href="Tenda Dome.html">Tenda Dome</a>
-        <a href="Tenda Keong.html">Tenda Keong</a>
-        <a href="Glamping.html">Glamping</a>
-        <a href="#promo-packages" onclick="scrollToSection('#promo-packages')"><h4>Paket Promo</h4></a>
-        <a href="Paket Hemat Main Puas.html">Paket Hemat Main Puas</a>
-        <a href="Paket Nginep Ceria.html">Paket Nginep Ceria</a>
-        <a href="Paket Nginep Sultan.html">Paket Nginep Sultan</a>
-        <a href="tiket.html"><h4>Lihat Semua Tiket</h4></a>
+        <a href="#attractions">Wahana</a>
+        <a href="#villa-glamping">Villa & Glamping</a>
+        <a href="#promo-packages">Paket Promo</a>
       </div>
     </div>
   </nav>
+
   <!-- Main Content -->
   <main>
     <!-- Attractions Section -->
+
     <section id="attractions">
+
       <h2>Wahana</h2>
+
       <!-- Attractions Cards -->
+
       <div class="attractions-cards">
 
         <div class="card">
@@ -101,7 +50,7 @@
           <p class="price">20.000</p>
           <p>Tidak Termasuk Tiket Masuk</p>
           <a href="Sky Tree.html">
-          <button >Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -111,7 +60,7 @@
           <p class="price">20.000</p>
           <p>Tidak Termasuk Tiket Masuk</p>
           <a href="Sky Nest.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -121,7 +70,7 @@
           <p class="price">25.000</p>
           <p>Tidak Termasuk Tiket Masuk</p>
           <a href="Sky Bike.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -131,7 +80,7 @@
           <p class="price">25.000</p>
           <p>Tidak Termasuk Tiket Masuk</p>
           <a href="Flying Fox.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -139,9 +88,9 @@
           <img src="img/foto1.jpeg" alt="Adrenaline Swing">
           <h3>Adrenaline Swing</h3>
           <p class="price">25.000</p>
-          <p>tidak Termasuk Tiket Masuk</p>
+          <p>Tidak Termasuk Tiket Masuk</p>
           <a href="Adrenaline Swing.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -151,7 +100,7 @@
           <p class="price">20.000</p>
           <p>Tidak Termasuk Tiket Masuk</p>
           <a href="Helikopter.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -161,7 +110,7 @@
           <p class="price">20.000</p>
           <p>Tidak Termasuk Tiket Masuk</p>
           <a href="Balon Helium.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -191,7 +140,7 @@
               <p class="price">500.000</p>
               <p>Tidak Termasuk Tiket Masuk</p>
               <a href="Tenda Dome.html">
-              <button>Beli Tiket</button>
+                <button>Beli Tiket</button>
               </a>
         </div>
 
@@ -204,7 +153,7 @@
               <p class="price">750.000</p>
               <p>Tidak Termasuk Tiket Masuk</p>
               <a href="Tenda Keong.html">
-              <button>Beli Tiket</button>
+                <button>Beli Tiket</button>
               </a>
         </div>
 
@@ -217,7 +166,7 @@
               <p class="price">1.200.000</p>
               <p>Tidak Termasuk Tiket Masuk</p>
               <a href="Glamping.html">
-              <button>Beli Tiket</button>
+                <button>Beli Tiket</button>
               </a>
         </div>
 
@@ -243,7 +192,7 @@
           <p class="price">155.000</p>
           <p>Tiket Masuk + Bebas Main Apa Saja</p>
           <a href="Paket Hemat Main Puas.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -253,7 +202,7 @@
           <p class="price">450.000</p>
           <p>Tiket Masuk + Tenda Dome + Bebas Main 3 Wahana</p>
           <a href="Paket Nginep Ceria.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
@@ -263,7 +212,7 @@
           <p class="price">1.100.000</p>
           <p>Tiket Masuk + Glamping + Bebas Main 5 Wahana + Break Feast</p>
           <a href="Paket Nginep Sultan.html">
-          <button>Beli Tiket</button>
+            <button>Beli Tiket</button>
           </a>
         </div>
 
